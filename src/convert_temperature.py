@@ -3,28 +3,35 @@
 import os
 import sys
 
-#from converter import Converter
-
-def convert_f_to_c(temp_f):
-    temp_c = (5.0/9.0) * (temp_f - 32.0)
-    return temp_c
-
+from converter import Converter
 
 if __name__ == "__main__":
 
-    temp_f = float(raw_input("enter temperature in fahrenheit: "))
-    temp_c = convert_f_to_c(temp_f)
+    converter = Converter()
 
-    print "%s degrees C and %s degrees F" % (temp_c, temp_f)
+    while True:
+        choice = raw_input("choose fahrenheit (F), celsius (C) or quit (Q): ")
 
+        if choice in ["Q", "q"]:
+            break
 
-#########
-# ideas #
-#########
+        elif choice in ["F", "f"]:
+            temp_f = float(raw_input("enter temperature in fahrenheit: "))
+            converter.convert_f_to_c(temp_f)
 
-# 1. add a function for c_to_f
-# 2. add a class to store those fns
-# 3. add a loop to keep asking for input until the user hits "q"
-# 4. add some if statements to print different things depending on the temparature
+        elif choice in ["C", "c"]:
+            temp_c = float(raw_input("enter temperature in centigrade: "))
+            converter.convert_c_to_f(temp_c)
 
+        else:
+            print "unkonwn choice; try again"
+            continue
 
+        print converter
+
+        if converter.is_hot():
+            print "Yikes!  Too hot!"
+        elif converter.is_cold():
+            print "Brrr!  Too cold!"
+        else:
+            print "Ahhh!  Just right!"

@@ -23,6 +23,9 @@ class Converter:
 
     """
 
+    temp_freezing = [0.0, 32.0]
+    temp_boiling = [100.0, 212.0]
+
     def __init__(self):
         self.temp_c = 0.0
         self.temp_f = 0.0
@@ -42,3 +45,8 @@ class Converter:
 
         self.temp_f = self.temp_c * (9.0/5.0) + 32.0
 
+    def is_hot(self):
+        return self.temp_c >= self.temp_boiling[0] or self.temp_f >= self.temp_boiling[1]
+
+    def is_cold(self):
+        return self.temp_c <= self.temp_freezing[0] or self.temp_f <= self.temp_freezing[1]
