@@ -12,8 +12,6 @@ if __name__ == "__main__":
     while True:
         choice = raw_input("choose fahrenheit (F), celsius (C) or quit (Q): ")
 
-#        import ipdb; ipdb.set_trace()
-
         if choice in ["Q", "q"]:
             break
 
